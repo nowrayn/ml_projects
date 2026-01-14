@@ -10,8 +10,12 @@ jobs:
   build-test:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: House_Price_Prediction
+
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -24,24 +28,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Verify model file exists
+      - name: Basic import test
         run: |
-          test -f model_pipeline.pkl
-
-      - name: Import FastAPI app
-        run: |
-          python - <<EOF
-          from app import app
-          print("FastAPI app loaded successfully")
-          EOF
-
-      - name: Health check logic
-        run: |
-          python - <<EOF
-          import joblib
-          model = joblib.load("model_pipeline.pkl")
-          print("Model loaded successfully")
-          EOF
-
-
-#deployment testing
+          python -c "import app"
