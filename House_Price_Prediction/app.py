@@ -6,6 +6,8 @@ from pydantic import BaseModel
 import pandas as pd
 import joblib
 
+## deploymnet testing
+
 app = FastAPI(title="House Price Prediction")
 
 templates = Jinja2Templates(directory="templates")
