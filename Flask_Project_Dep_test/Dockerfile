@@ -9,3 +9,4 @@ COPY app.py .
 
 # Render exposes PORT env var — MUST use it
 CMD ["sh", "-c", "gunicorn app:app --bind 0.0.0.0:$PORT"]
+
